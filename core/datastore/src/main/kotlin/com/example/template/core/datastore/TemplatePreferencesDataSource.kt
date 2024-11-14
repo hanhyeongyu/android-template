@@ -37,7 +37,7 @@ class TemplatePreferencesDataSource @Inject constructor(
                     -> ThemeBrand.DEFAULT
                 ThemeBrandProto.THEME_BRAND_ANDROID -> ThemeBrand.ANDROID
             },
-            darkThemeConfig = when (it.darkThemeConfig) {
+            darkTheme = when (it.darkThemeConfig) {
                 null,
                 DarkThemeConfigProto.DARK_THEME_CONFIG_UNSPECIFIED,
                 DarkThemeConfigProto.UNRECOGNIZED,
@@ -48,6 +48,7 @@ class TemplatePreferencesDataSource @Inject constructor(
                     DarkTheme.LIGHT
                 DarkThemeConfigProto.DARK_THEME_CONFIG_DARK -> DarkTheme.DARK
             },
+            useDynamicColor = it.useDynamicColor
         )
     }
 
@@ -57,7 +58,7 @@ class TemplatePreferencesDataSource @Inject constructor(
                 it.copy { this.showCompleted = showCompleted }
             }
         } catch (ioException: IOException) {
-            Log.e("NiaPreferences", "Failed to update user preferences", ioException)
+            Log.e("Te,[;atePreferences", "Failed to update user preferences", ioException)
         }
     }
 
@@ -77,12 +78,17 @@ class TemplatePreferencesDataSource @Inject constructor(
         userPreferences.updateData {
             it.copy {
                 this.darkThemeConfig = when (darkThemeConfig) {
-                    DarkTheme.FOLLOW_SYSTEM ->
-                        DarkThemeConfigProto.DARK_THEME_CONFIG_FOLLOW_SYSTEM
+                    DarkTheme.FOLLOW_SYSTEM -> DarkThemeConfigProto.DARK_THEME_CONFIG_FOLLOW_SYSTEM
                     DarkTheme.LIGHT -> DarkThemeConfigProto.DARK_THEME_CONFIG_LIGHT
                     DarkTheme.DARK -> DarkThemeConfigProto.DARK_THEME_CONFIG_DARK
                 }
             }
+        }
+    }
+
+    suspend fun setDynamicColorPreference(useDynamicColor: Boolean) {
+        userPreferences.updateData {
+            it.copy { this.useDynamicColor = useDynamicColor }
         }
     }
 

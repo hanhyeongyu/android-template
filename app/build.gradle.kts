@@ -6,6 +6,7 @@ plugins {
     alias(libs.plugins.template.android.application.compose)
     alias(libs.plugins.template.android.application.firebase)
     alias(libs.plugins.template.android.application.flavors)
+    id("com.google.android.gms.oss-licenses-plugin")
 
     alias(libs.plugins.template.hilt)
     alias(libs.plugins.kotlin.serialization)
@@ -49,7 +50,10 @@ dependencies {
     implementation(projects.core.database)
     implementation(projects.core.datastore)
     implementation(projects.core.datastoreProto)
+    implementation(projects.core.designsystem)
     implementation(projects.core.notification)
+
+    implementation(projects.settings)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
@@ -60,6 +64,9 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.compose.material3)
+
+    implementation(libs.androidx.core.splashscreen)
+
 
     ksp(libs.hilt.compiler)
     kspTest(libs.hilt.compiler)

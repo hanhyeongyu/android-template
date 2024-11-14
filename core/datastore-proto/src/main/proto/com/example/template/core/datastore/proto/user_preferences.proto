@@ -26,4 +26,5 @@ message UserPreferences {
     bool show_completed = 1;
     ThemeBrandProto theme_brand_config = 2;
     DarkThemeConfigProto dark_theme_config = 3;
+    bool useDynamicColor = 4;
 }

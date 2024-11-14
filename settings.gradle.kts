@@ -27,4 +27,7 @@ include(":core:composeutils")
 include(":core:database")
 include(":core:datastore")
 include(":core:datastore-proto")
+include(":core:designsystem")
 include(":core:notification")
+
+include(":settings")

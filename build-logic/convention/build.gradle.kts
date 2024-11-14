@@ -75,6 +75,10 @@ gradlePlugin {
             id = "template.android.library"
             implementationClass = "AndroidLibraryConventionPlugin"
         }
+        register("androidFeature") {
+            id = "template.android.feature"
+            implementationClass = "AndroidFeatureConventionPlugin"
+        }
         register("androidFlavors") {
             id = "template.android.application.flavors"
             implementationClass = "AndroidApplicationFlavorsConventionPlugin"
