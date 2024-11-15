@@ -53,7 +53,7 @@ internal class SystemTrayNotifier @Inject constructor(
 
         val notifications = truncatedNewsResources.map { resource ->
             createNotification {
-                setSmallIcon(R.drawable.core_notifications_ic_nia_notification).setContentTitle(
+                setSmallIcon(R.drawable.core_notifications_ic_mock_notification).setContentTitle(
                         resource
                     ).setContentText(resource)
                     .setContentIntent(newsPendingIntent(resource))
@@ -66,7 +66,7 @@ internal class SystemTrayNotifier @Inject constructor(
                 truncatedNewsResources.size,
             )
             setContentTitle(title).setContentText(title)
-                .setSmallIcon(R.drawable.core_notifications_ic_nia_notification)
+                .setSmallIcon(R.drawable.core_notifications_ic_mock_notification)
                 // Build summary info into InboxStyle template.
                 .setStyle(notificationStyle(truncatedNewsResources, title))
                 .setGroup(MESSAGE_NOTIFICATION_GROUP).setGroupSummary(true).setAutoCancel(true).build()

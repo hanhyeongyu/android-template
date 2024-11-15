@@ -1,10 +1,10 @@
-plugins{
+plugins {
     alias(libs.plugins.template.android.library)
     alias(libs.plugins.template.android.library.compose)
 }
 
 android{
-    namespace = "com.example.template.core.designsystem"
+    namespace = "com.example.template.core.ui"
 }
 
 dependencies{
@@ -12,8 +12,8 @@ dependencies{
     //api(libs.androidx.compose.foundation.layout)
     api(libs.androidx.compose.material.iconsExtended)
     api(libs.androidx.compose.material3)
-    api(libs.androidx.compose.material3.adaptive)
-    api(libs.androidx.compose.material3.navigationSuite)
+    //api(libs.androidx.compose.material3.adaptive)
+    //api(libs.androidx.compose.material3.navigationSuite)
     api(libs.androidx.compose.runtime)
     //api(libs.androidx.compose.ui.util)
 

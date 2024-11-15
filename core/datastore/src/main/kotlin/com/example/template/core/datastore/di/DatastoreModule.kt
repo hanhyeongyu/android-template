@@ -23,7 +23,7 @@ import androidx.datastore.dataStoreFile
 import com.example.template.core.datastore.UserPreferences
 import com.example.template.core.datastore.UserPreferencesSerializer
 import com.example.template.core.network.Dispatcher
-import com.example.template.core.network.TemplateDispatchers.IO
+import com.example.template.core.network.AppDispatchers.IO
 import com.example.template.core.network.di.ApplicationScope
 import dagger.Module
 import dagger.Provides

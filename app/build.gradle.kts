@@ -46,7 +46,7 @@ dependencies {
     implementation(projects.core.common)
     implementation(projects.core.log)
     implementation(projects.core.network)
-    implementation(projects.core.composeutils)
+    implementation(projects.core.ui)
     implementation(projects.core.database)
     implementation(projects.core.datastore)
     implementation(projects.core.datastoreProto)
@@ -64,12 +64,22 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.compose.material3)
+    implementation(libs.androidx.compose.material3.adaptive)
+//    implementation(libs.androidx.compose.material3.adaptive.layout)
+//    implementation(libs.androidx.compose.material3.adaptive.navigation)
+
+    implementation(libs.androidx.navigation.compose)
 
     implementation(libs.androidx.core.splashscreen)
 
 
     ksp(libs.hilt.compiler)
     kspTest(libs.hilt.compiler)
+
+
+    implementation(libs.kotlinx.datetime)
+    implementation(libs.kotlinx.serialization.json)
+
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

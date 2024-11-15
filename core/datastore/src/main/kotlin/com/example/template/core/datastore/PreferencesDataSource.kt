@@ -22,13 +22,13 @@ import kotlinx.coroutines.flow.map
 import java.io.IOException
 import javax.inject.Inject
 
-class TemplatePreferencesDataSource @Inject constructor(
+class PreferencesDataSource @Inject constructor(
     private val userPreferences: DataStore<UserPreferences>,
 ) {
 
     val userData = userPreferences.data.map {
         UserData(
-            show_completed = it.showCompleted,
+            showCompleted = it.showCompleted,
             themeBrand = when (it.themeBrandConfig) {
                 null,
                 ThemeBrandProto.THEME_BRAND_UNSPECIFIED,

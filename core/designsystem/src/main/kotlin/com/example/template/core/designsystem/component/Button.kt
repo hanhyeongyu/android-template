@@ -34,8 +34,8 @@ import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.template.core.designsystem.icon.TemplateIcon
-import com.example.template.core.designsystem.theme.TemplateTheme
+import com.example.template.core.designsystem.icon.AppIcons
+import com.example.template.core.designsystem.theme.AppTheme
 
 /**
  * Now in Android filled button with generic content slot. Wraps Material 3 [Button].
@@ -49,7 +49,7 @@ import com.example.template.core.designsystem.theme.TemplateTheme
  * @param content The button content.
  */
 @Composable
-fun TemplateButton(
+fun AppButton(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
@@ -79,14 +79,14 @@ fun TemplateButton(
  * @param leadingIcon The button leading icon content. Pass `null` here for no leading icon.
  */
 @Composable
-fun TemplateButton(
+fun AppButton(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
     text: @Composable () -> Unit,
     leadingIcon: @Composable (() -> Unit)? = null,
 ) {
-    TemplateButton(
+    AppButton(
         onClick = onClick,
         modifier = modifier,
         enabled = enabled,
@@ -96,7 +96,7 @@ fun TemplateButton(
             ButtonDefaults.ContentPadding
         },
     ) {
-        TemplateButtonContent(
+        AppButtonContent(
             text = text,
             leadingIcon = leadingIcon,
         )
@@ -115,7 +115,7 @@ fun TemplateButton(
  * @param content The button content.
  */
 @Composable
-fun TemplateOutlinedButton(
+fun AppOutlinedButton(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
@@ -130,12 +130,12 @@ fun TemplateOutlinedButton(
             contentColor = MaterialTheme.colorScheme.onBackground,
         ),
         border = BorderStroke(
-            width = TemplateButtonDefaults.OutlinedButtonBorderWidth,
+            width = AppButtonDefaults.OutlinedButtonBorderWidth,
             color = if (enabled) {
                 MaterialTheme.colorScheme.outline
             } else {
                 MaterialTheme.colorScheme.onSurface.copy(
-                    alpha = TemplateButtonDefaults.DISABLED_OUTLINED_BUTTON_BORDER_ALPHA,
+                    alpha = AppButtonDefaults.DISABLED_OUTLINED_BUTTON_BORDER_ALPHA,
                 )
             },
         ),
@@ -155,14 +155,14 @@ fun TemplateOutlinedButton(
  * @param leadingIcon The button leading icon content. Pass `null` here for no leading icon.
  */
 @Composable
-fun TemplateOutlinedButton(
+fun AppOutlinedButton(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
     text: @Composable () -> Unit,
     leadingIcon: @Composable (() -> Unit)? = null,
 ) {
-    TemplateOutlinedButton(
+    AppOutlinedButton(
         onClick = onClick,
         modifier = modifier,
         enabled = enabled,
@@ -172,7 +172,7 @@ fun TemplateOutlinedButton(
             ButtonDefaults.ContentPadding
         },
     ) {
-        TemplateButtonContent(
+        AppButtonContent(
             text = text,
             leadingIcon = leadingIcon,
         )
@@ -189,7 +189,7 @@ fun TemplateOutlinedButton(
  * @param content The button content.
  */
 @Composable
-fun TemplateTextButton(
+fun AppTextButton(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
@@ -217,19 +217,19 @@ fun TemplateTextButton(
  * @param leadingIcon The button leading icon content. Pass `null` here for no leading icon.
  */
 @Composable
-fun TemplateTextButton(
+fun AppTextButton(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
     text: @Composable () -> Unit,
     leadingIcon: @Composable (() -> Unit)? = null,
 ) {
-    TemplateTextButton(
+    AppTextButton(
         onClick = onClick,
         modifier = modifier,
         enabled = enabled,
     ) {
-        TemplateButtonContent(
+        AppButtonContent(
             text = text,
             leadingIcon = leadingIcon,
         )
@@ -243,7 +243,7 @@ fun TemplateTextButton(
  * @param leadingIcon The button leading icon content. Default is `null` for no leading icon.Ï
  */
 @Composable
-private fun TemplateButtonContent(
+private fun AppButtonContent(
     text: @Composable () -> Unit,
     leadingIcon: @Composable (() -> Unit)? = null,
 ) {
@@ -268,33 +268,33 @@ private fun TemplateButtonContent(
 
 @ThemePreviews
 @Composable
-fun TemplateButtonPreview() {
-    TemplateTheme {
-        TemplateBackground(modifier = Modifier.size(150.dp, 50.dp)) {
-            TemplateButton(onClick = {}, text = { Text("Test button") })
+fun AppButtonPreview() {
+    AppTheme {
+        AppBackground(modifier = Modifier.size(150.dp, 50.dp)) {
+            AppButton(onClick = {}, text = { Text("Test button") })
         }
     }
 }
 
 @ThemePreviews
 @Composable
-fun TemplateOutlinedButtonPreview() {
-    TemplateTheme {
-        TemplateBackground(modifier = Modifier.size(150.dp, 50.dp)) {
-            TemplateOutlinedButton(onClick = {}, text = { Text("Test button") })
+fun AppOutlinedButtonPreview() {
+    AppTheme {
+        AppBackground(modifier = Modifier.size(150.dp, 50.dp)) {
+            AppOutlinedButton(onClick = {}, text = { Text("Test button") })
         }
     }
 }
 
 @ThemePreviews
 @Composable
-fun TemplateButtonLeadingIconPreview() {
-    TemplateTheme {
-        TemplateBackground(modifier = Modifier.size(150.dp, 50.dp)) {
-            TemplateButton(
+fun AppButtonLeadingIconPreview() {
+    AppTheme {
+        AppBackground(modifier = Modifier.size(150.dp, 50.dp)) {
+            AppButton(
                 onClick = {},
                 text = { Text("Test button") },
-                leadingIcon = { Icon(imageVector = TemplateIcon.Add, contentDescription = null) },
+                leadingIcon = { Icon(imageVector = AppIcons.Add, contentDescription = null) },
             )
         }
     }
@@ -303,7 +303,7 @@ fun TemplateButtonLeadingIconPreview() {
 /**
  * Now in Android button default values.
  */
-object TemplateButtonDefaults {
+object AppButtonDefaults {
     // TODO: File bug
     // OutlinedButton border color doesn't respect disabled state by default
     const val DISABLED_OUTLINED_BUTTON_BORDER_ALPHA = 0.12f

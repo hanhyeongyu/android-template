@@ -1,7 +1,7 @@
 package com.example.template.core.datastore
 
 data class UserData(
-    val show_completed: Boolean,
+    val showCompleted: Boolean,
     val themeBrand: ThemeBrand,
     val darkTheme: DarkTheme,
     val useDynamicColor: Boolean

@@ -1,4 +1,4 @@
-package com.example.template.core.composeutils
+package com.example.template.core.ui
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box

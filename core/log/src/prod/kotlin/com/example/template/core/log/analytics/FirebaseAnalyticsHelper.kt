@@ -14,10 +14,8 @@
  * limitations under the License.
  */
 
-package com.example.template.core.log.analytics.prod
+package com.example.template.core.log.analytics
 
-import com.example.template.core.log.analytics.AnalyticsEvent
-import com.example.template.core.log.analytics.AnalyticsHelper
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.analytics.logEvent
 import javax.inject.Inject

@@ -16,13 +16,25 @@
 
 package com.example.template.core.log.analytics
 
-import androidx.compose.runtime.staticCompositionLocalOf
+import com.google.firebase.Firebase
+import com.google.firebase.analytics.FirebaseAnalytics
+import com.google.firebase.analytics.analytics
+import dagger.Binds
+import dagger.Module
+import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
+import javax.inject.Singleton
 
-/**
- * Global key used to obtain access to the AnalyticsHelper through a CompositionLocal.
- */
-val LocalAnalyticsHelper = staticCompositionLocalOf<AnalyticsHelper> {
-    // Provide a default AnalyticsHelper which does nothing. This is so that tests and previews
-    // do not have to provide one. For real app builds provide a different implementation.
-    NoOpAnalyticsHelper()
+@Module
+@InstallIn(SingletonComponent::class)
+internal abstract class AnalyticsModule {
+    @Binds
+    abstract fun bindsAnalyticsHelper(analyticsHelperImpl: FirebaseAnalyticsHelper): AnalyticsHelper
+
+    companion object {
+        @Provides
+        @Singleton
+        fun provideFirebaseAnalytics(): FirebaseAnalytics = Firebase.analytics
+    }
 }

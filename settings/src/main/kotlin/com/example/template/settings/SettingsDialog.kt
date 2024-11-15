@@ -61,8 +61,8 @@ import com.example.template.core.datastore.DarkTheme.LIGHT
 import com.example.template.core.datastore.ThemeBrand
 import com.example.template.core.datastore.ThemeBrand.ANDROID
 import com.example.template.core.datastore.ThemeBrand.DEFAULT
-import com.example.template.core.designsystem.component.TemplateTextButton
-import com.example.template.core.designsystem.theme.TemplateTheme
+import com.example.template.core.designsystem.component.AppTextButton
+import com.example.template.core.designsystem.theme.AppTheme
 import com.example.template.core.designsystem.theme.supportsDynamicTheming
 import com.example.template.settings.R.string
 import com.example.template.settings.SettingsUiState.Loading
@@ -257,25 +257,25 @@ private fun LinksPanel() {
         modifier = Modifier.fillMaxWidth(),
     ) {
         val uriHandler = LocalUriHandler.current
-        TemplateTextButton(
+        AppTextButton(
             onClick = { uriHandler.openUri(PRIVACY_POLICY_URL) },
         ) {
             Text(text = stringResource(string.settings_privacy_policy))
         }
         val context = LocalContext.current
-        TemplateTextButton(
+        AppTextButton(
             onClick = {
                 context.startActivity(Intent(context, OssLicensesMenuActivity::class.java))
             },
         ) {
             Text(text = stringResource(string.settings_licenses))
         }
-        TemplateTextButton(
+        AppTextButton(
             onClick = { uriHandler.openUri(BRAND_GUIDELINES_URL) },
         ) {
             Text(text = stringResource(string.settings_brand_guidelines))
         }
-        TemplateTextButton(
+        AppTextButton(
             onClick = { uriHandler.openUri(FEEDBACK_URL) },
         ) {
             Text(text = stringResource(string.settings_feedback))
@@ -286,7 +286,7 @@ private fun LinksPanel() {
 @Preview
 @Composable
 private fun PreviewSettingsDialog() {
-    TemplateTheme{
+    AppTheme{
         SettingsDialog(
             onDismiss = {},
             settingsUiState = Success(
@@ -306,7 +306,7 @@ private fun PreviewSettingsDialog() {
 @Preview
 @Composable
 private fun PreviewSettingsDialogLoading() {
-    TemplateTheme{
+    AppTheme{
         SettingsDialog(
             onDismiss = {},
             settingsUiState = Loading,
@@ -319,4 +319,4 @@ private fun PreviewSettingsDialogLoading() {
 
 private const val PRIVACY_POLICY_URL = "https://policies.google.com/privacy"
 private const val BRAND_GUIDELINES_URL = "https://developer.android.com/distribute/marketing-tools/brand-guidelines"
-private const val FEEDBACK_URL = "https://goo.gle/nia-app-feedback"
+private const val FEEDBACK_URL = "https://goo.gle/template-app-feedback"

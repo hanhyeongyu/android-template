@@ -17,8 +17,8 @@
 package com.example.template.core.network.di
 
 import com.example.template.core.network.Dispatcher
-import com.example.template.core.network.TemplateDispatchers.Default
-import com.example.template.core.network.TemplateDispatchers.IO
+import com.example.template.core.network.AppDispatchers.Default
+import com.example.template.core.network.AppDispatchers.IO
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

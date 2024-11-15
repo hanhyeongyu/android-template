@@ -15,24 +15,43 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.example.template.MainActivityUiState.Loading
 import com.example.template.MainActivityUiState.Success
 import com.example.template.core.datastore.DarkTheme
 import com.example.template.core.datastore.ThemeBrand
-import com.example.template.core.designsystem.theme.TemplateTheme
-import com.example.template.ui.TemplateApp
+import com.example.template.core.designsystem.theme.AppTheme
+import com.example.template.core.log.analytics.AnalyticsHelper
+import com.example.template.core.network.utils.NetworkMonitor
+import com.example.template.core.network.utils.TimeZoneMonitor
+import com.example.template.core.ui.LocalAnalyticsHelper
+import com.example.template.core.ui.LocalTimeZone
+import com.example.template.ui.App
+import com.example.template.ui.rememberAppState
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
 
+    @Inject
+    lateinit var networkMonitor: NetworkMonitor
+
+    @Inject
+    lateinit var timeZoneMonitor: TimeZoneMonitor
+
+    @Inject
+    lateinit var analyticsHelper: AnalyticsHelper
+
     private val viewModel: MainActivityViewModel by viewModels()
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         val splashScreen = installSplashScreen()
@@ -88,13 +107,22 @@ class MainActivity : ComponentActivity() {
             }
 
 
-            CompositionLocalProvider{
-                TemplateTheme(
+            val appState = rememberAppState(
+                networkMonitor = networkMonitor,
+                timeZoneMonitor = timeZoneMonitor,
+            )
+
+            val currentTimeZone by appState.currentTimeZone.collectAsStateWithLifecycle()
+            CompositionLocalProvider(
+                LocalAnalyticsHelper provides analyticsHelper,
+                LocalTimeZone provides currentTimeZone,
+            ){
+                AppTheme(
                     darkTheme = darkTheme,
                     androidTheme = shouldUseAndroidTheme(uiState),
                     disableDynamicTheming = shouldDisableDynamicTheming(uiState),
                 ) {
-                    TemplateApp()
+                    App(appState)
                 }
             }
         }

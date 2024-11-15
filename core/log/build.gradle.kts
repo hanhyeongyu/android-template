@@ -1,6 +1,5 @@
 plugins{
     alias(libs.plugins.template.android.library)
-    alias(libs.plugins.template.android.library.compose)
     alias(libs.plugins.template.hilt)
 }
 
@@ -14,8 +13,7 @@ android{
 
 
 dependencies{
-    implementation(libs.androidx.compose.runtime)
-    implementation(libs.timber)
+    api(libs.timber)
 
     implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.analytics)

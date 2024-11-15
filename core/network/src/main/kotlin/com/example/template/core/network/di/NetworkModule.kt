@@ -29,7 +29,7 @@ internal object NetworkModule {
 
     @Provides
     @Singleton
-    fun okHttpCallFactory(): Call.Factory = trace("NiaOkHttpClient") {
+    fun okHttpCallFactory(): Call.Factory = trace("OkHttpClient") {
         OkHttpClient.Builder()
             .addInterceptor(
                 HttpLoggingInterceptor()
@@ -70,6 +70,5 @@ internal object NetworkModule {
             }
             .build()
     }
-
 
 }

@@ -3,7 +3,7 @@ package com.example.template.settings
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.template.core.datastore.DarkTheme
-import com.example.template.core.datastore.TemplatePreferencesDataSource
+import com.example.template.core.datastore.PreferencesDataSource
 import com.example.template.core.datastore.ThemeBrand
 import com.example.template.settings.SettingsUiState.Loading
 import com.example.template.settings.SettingsUiState.Success
@@ -19,7 +19,7 @@ import kotlin.time.Duration.Companion.seconds
 
 @HiltViewModel
 class Settings @Inject constructor(
-    private val userPreferences: TemplatePreferencesDataSource
+    private val userPreferences: PreferencesDataSource
 ) : ViewModel() {
     val settingsUiState: StateFlow<SettingsUiState> =
         userPreferences.userData

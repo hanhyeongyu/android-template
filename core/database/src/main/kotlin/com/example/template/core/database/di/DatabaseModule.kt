@@ -2,7 +2,7 @@ package com.example.template.core.database.di
 
 import android.content.Context
 import androidx.room.Room
-import com.example.template.core.database.TemplateDatabase
+import com.example.template.core.database.AppDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -15,11 +15,11 @@ import javax.inject.Singleton
 internal object DatabaseModule {
     @Provides
     @Singleton
-    fun providesNiaDatabase(
+    fun providesDatabase(
         @ApplicationContext context: Context,
-    ): TemplateDatabase = Room.databaseBuilder(
+    ): AppDatabase = Room.databaseBuilder(
         context,
-        TemplateDatabase::class.java,
+        AppDatabase::class.java,
         "template-database",
     ).build()
 }

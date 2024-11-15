@@ -19,6 +19,6 @@ import com.example.template.core.database.util.InstantConverter
 @TypeConverters(
     InstantConverter::class,
 )
-internal abstract class TemplateDatabase : RoomDatabase() {
+internal abstract class AppDatabase : RoomDatabase() {
     //abstract fun topicDao(): TopicDao
 }

@@ -34,10 +34,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import com.example.template.core.designsystem.theme.AppTheme
 import com.example.template.core.designsystem.theme.GradientColors
 import com.example.template.core.designsystem.theme.LocalBackgroundTheme
 import com.example.template.core.designsystem.theme.LocalGradientColors
-import com.example.template.core.designsystem.theme.TemplateTheme
 import kotlin.math.tan
 
 /**
@@ -48,7 +48,7 @@ import kotlin.math.tan
  * @param content The background content.
  */
 @Composable
-fun TemplateBackground(
+fun AppBackground(
     modifier: Modifier = Modifier,
     content: @Composable () -> Unit,
 ) {
@@ -74,7 +74,7 @@ fun TemplateBackground(
  * @param content The background content.
  */
 @Composable
-fun TemplateGradientBackground(
+fun AppGradientBackground(
     modifier: Modifier = Modifier,
     gradientColors: GradientColors = LocalGradientColors.current,
     content: @Composable () -> Unit,
@@ -150,47 +150,47 @@ annotation class ThemePreviews
 @ThemePreviews
 @Composable
 fun BackgroundDefault() {
-    TemplateTheme(disableDynamicTheming = true) {
-        TemplateBackground(Modifier.size(100.dp), content = {})
+    AppTheme(disableDynamicTheming = true) {
+        AppBackground(Modifier.size(100.dp), content = {})
     }
 }
 
 @ThemePreviews
 @Composable
 fun BackgroundDynamic() {
-    TemplateTheme(disableDynamicTheming = false) {
-        TemplateBackground(Modifier.size(100.dp), content = {})
+    AppTheme(disableDynamicTheming = false) {
+        AppBackground(Modifier.size(100.dp), content = {})
     }
 }
 
 @ThemePreviews
 @Composable
 fun BackgroundAndroid() {
-    TemplateTheme(androidTheme = true) {
-        TemplateBackground(Modifier.size(100.dp), content = {})
+    AppTheme(androidTheme = true) {
+        AppBackground(Modifier.size(100.dp), content = {})
     }
 }
 
 @ThemePreviews
 @Composable
 fun GradientBackgroundDefault() {
-    TemplateTheme(disableDynamicTheming = true) {
-        TemplateGradientBackground(Modifier.size(100.dp), content = {})
+    AppTheme(disableDynamicTheming = true) {
+        AppGradientBackground(Modifier.size(100.dp), content = {})
     }
 }
 
 @ThemePreviews
 @Composable
 fun GradientBackgroundDynamic() {
-    TemplateTheme(disableDynamicTheming = false) {
-        TemplateGradientBackground(Modifier.size(100.dp), content = {})
+    AppTheme(disableDynamicTheming = false) {
+        AppGradientBackground(Modifier.size(100.dp), content = {})
     }
 }
 
 @ThemePreviews
 @Composable
 fun GradientBackgroundAndroid() {
-    TemplateTheme(androidTheme = true) {
-        TemplateGradientBackground(Modifier.size(100.dp), content = {})
+    AppTheme(androidTheme = true) {
+        AppGradientBackground(Modifier.size(100.dp), content = {})
     }
 }
