@@ -18,6 +18,8 @@ import com.android.build.api.variant.LibraryAndroidComponentsExtension
 import com.android.build.gradle.LibraryExtension
 import com.example.template.configureFlavors
 import com.example.template.configureKotlinAndroid
+import com.example.template.configurePrintApksTask
+import com.example.template.disableUnnecessaryAndroidTests
 import com.example.template.libs
 import org.gradle.api.Plugin
 import org.gradle.api.Project
@@ -45,8 +47,8 @@ class AndroidLibraryConventionPlugin : Plugin<Project> {
                 resourcePrefix = path.split("""\W""".toRegex()).drop(1).distinct().joinToString(separator = "_").lowercase() + "_"
             }
             extensions.configure<LibraryAndroidComponentsExtension> {
-                //configurePrintApksTask(this)
-                //disableUnnecessaryAndroidTests(target)
+                configurePrintApksTask(this)
+                disableUnnecessaryAndroidTests(target)
             }
             dependencies {
                 add("androidTestImplementation", kotlin("test"))

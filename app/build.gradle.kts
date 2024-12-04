@@ -14,7 +14,6 @@ plugins {
 
 android {
     namespace = "com.example.template"
-    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.example.template"
@@ -38,6 +37,17 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+        }
+    }
+
+    packaging {
+        resources {
+            excludes.add("/META-INF/{AL2.0,LGPL2.1}")
+        }
+    }
+    testOptions {
+        unitTests {
+            isIncludeAndroidResources = true
         }
     }
 }

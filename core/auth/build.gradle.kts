@@ -12,11 +12,6 @@ android {
         buildConfig = true
     }
     namespace = "com.example.template.core.auth"
-    testOptions {
-        unitTests {
-            isIncludeAndroidResources = true
-        }
-    }
 }
 
 secrets {

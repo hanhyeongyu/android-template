@@ -4,11 +4,11 @@ plugins{
 }
 
 android{
-    namespace = "com.example.template.core.log"
-
     buildFeatures {
         buildConfig = true
     }
+
+    namespace = "com.example.template.core.log"
 }
 
 
