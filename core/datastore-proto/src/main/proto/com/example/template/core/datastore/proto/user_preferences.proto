@@ -27,4 +27,5 @@ message UserPreferences {
     ThemeBrandProto theme_brand_config = 2;
     DarkThemeConfigProto dark_theme_config = 3;
     bool useDynamicColor = 4;
+    bool authenticated = 5;
 }

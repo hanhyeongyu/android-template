@@ -1,4 +1,4 @@
-package com.example.template.core.network.utils
+package com.example.template.core.network.monitor
 
 import android.content.Context
 import android.net.ConnectivityManager

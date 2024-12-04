@@ -4,7 +4,8 @@ data class UserData(
     val showCompleted: Boolean,
     val themeBrand: ThemeBrand,
     val darkTheme: DarkTheme,
-    val useDynamicColor: Boolean
+    val useDynamicColor: Boolean,
+    val authenticated: Boolean
 )
 
 enum class ThemeBrand {

@@ -54,7 +54,7 @@ import com.example.template.core.designsystem.component.AppTopAppBar
 import com.example.template.core.designsystem.icon.AppIcons
 import com.example.template.core.designsystem.theme.GradientColors
 import com.example.template.core.designsystem.theme.LocalGradientColors
-import com.example.template.navigation.NiaNavHost
+import com.example.template.navigation.AppNavHost
 import com.example.template.navigation.TopLevelDestination
 import com.example.template.settings.SettingsDialog
 import timber.log.Timber
@@ -217,7 +217,7 @@ internal fun App(
                         },
                     ),
                 ) {
-                    NiaNavHost(
+                    AppNavHost(
                         appState = appState,
                         onShowSnackbar = { message, action ->
                             snackbarHostState.showSnackbar(

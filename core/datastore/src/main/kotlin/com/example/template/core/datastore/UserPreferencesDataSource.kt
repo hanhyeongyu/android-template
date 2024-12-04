@@ -22,7 +22,7 @@ import kotlinx.coroutines.flow.map
 import java.io.IOException
 import javax.inject.Inject
 
-class PreferencesDataSource @Inject constructor(
+class UserPreferencesDataSource @Inject constructor(
     private val userPreferences: DataStore<UserPreferences>,
 ) {
 
@@ -48,17 +48,18 @@ class PreferencesDataSource @Inject constructor(
                     DarkTheme.LIGHT
                 DarkThemeConfigProto.DARK_THEME_CONFIG_DARK -> DarkTheme.DARK
             },
-            useDynamicColor = it.useDynamicColor
+            useDynamicColor = it.useDynamicColor,
+            authenticated = it.authenticated
         )
     }
 
-    suspend fun updateShowCompleted(showCompleted: Boolean) {
+    suspend fun setShowCompleted(showCompleted: Boolean) {
         try {
             userPreferences.updateData {
                 it.copy { this.showCompleted = showCompleted }
             }
         } catch (ioException: IOException) {
-            Log.e("Te,[;atePreferences", "Failed to update user preferences", ioException)
+            Log.e("TemplatePreferences", "Failed to update user preferences", ioException)
         }
     }
 
@@ -92,6 +93,11 @@ class PreferencesDataSource @Inject constructor(
         }
     }
 
+    suspend fun setAuthenticated(){
+        userPreferences.updateData {
+            it.copy { this.authenticated = true }
+        }
+    }
 
 
 }

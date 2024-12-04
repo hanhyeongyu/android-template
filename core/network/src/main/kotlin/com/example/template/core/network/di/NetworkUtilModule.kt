@@ -1,9 +1,9 @@
 package com.example.template.core.network.di
 
-import com.example.template.core.network.utils.ConnectivityManagerNetworkMonitor
-import com.example.template.core.network.utils.NetworkMonitor
-import com.example.template.core.network.utils.TimeZoneBroadcastMonitor
-import com.example.template.core.network.utils.TimeZoneMonitor
+import com.example.template.core.network.monitor.ConnectivityManagerNetworkMonitor
+import com.example.template.core.network.monitor.NetworkMonitor
+import com.example.template.core.network.monitor.TimeZoneBroadcastMonitor
+import com.example.template.core.network.monitor.TimeZoneMonitor
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

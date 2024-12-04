@@ -20,12 +20,13 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.example.template.MainActivityUiState.Loading
 import com.example.template.MainActivityUiState.Success
+import com.example.template.auth.AuthScreen
 import com.example.template.core.datastore.DarkTheme
 import com.example.template.core.datastore.ThemeBrand
 import com.example.template.core.designsystem.theme.AppTheme
 import com.example.template.core.log.analytics.AnalyticsHelper
-import com.example.template.core.network.utils.NetworkMonitor
-import com.example.template.core.network.utils.TimeZoneMonitor
+import com.example.template.core.network.monitor.NetworkMonitor
+import com.example.template.core.network.monitor.TimeZoneMonitor
 import com.example.template.core.ui.LocalAnalyticsHelper
 import com.example.template.core.ui.LocalTimeZone
 import com.example.template.ui.App
@@ -50,8 +51,6 @@ class MainActivity : ComponentActivity() {
     lateinit var analyticsHelper: AnalyticsHelper
 
     private val viewModel: MainActivityViewModel by viewModels()
-
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         val splashScreen = installSplashScreen()
@@ -122,7 +121,11 @@ class MainActivity : ComponentActivity() {
                     androidTheme = shouldUseAndroidTheme(uiState),
                     disableDynamicTheming = shouldDisableDynamicTheming(uiState),
                 ) {
-                    App(appState)
+                    if(authenticated(uiState)){
+                        App(appState)
+                    }else{
+                        AuthScreen()
+                    }
                 }
             }
         }
@@ -182,3 +185,12 @@ private val lightScrim = android.graphics.Color.argb(0xe6, 0xFF, 0xFF, 0xFF)
  * https://cs.android.com/androidx/platform/frameworks/support/+/androidx-main:activity/activity/src/main/java/androidx/activity/EdgeToEdge.kt;l=40-44;drc=27e7d52e8604a080133e8b842db10c89b4482598
  */
 private val darkScrim = android.graphics.Color.argb(0x80, 0x1b, 0x1b, 0x1b)
+
+
+@Composable
+private fun authenticated(
+    uiState: MainActivityUiState
+): Boolean = when(uiState){
+    Loading -> false
+    is Success -> uiState.userData.authenticated
+}

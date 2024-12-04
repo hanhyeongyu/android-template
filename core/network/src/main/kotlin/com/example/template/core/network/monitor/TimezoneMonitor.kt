@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.example.template.core.network.utils
+package com.example.template.core.network.monitor
 
 import android.content.BroadcastReceiver
 import android.content.Context

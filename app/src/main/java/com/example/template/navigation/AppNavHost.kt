@@ -16,11 +16,9 @@
 
 package com.example.template.navigation
 
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
 import com.example.template.navigation.temp.ForYouBaseRoute
 import com.example.template.navigation.temp.bookmarksScreen
 import com.example.template.navigation.temp.forYouSection
@@ -36,7 +34,7 @@ import com.example.template.ui.AppState
  * within each route is handled using state and Back Handlers.
  */
 @Composable
-fun NiaNavHost(
+fun AppNavHost(
     appState: AppState,
     onShowSnackbar: suspend (String, String?) -> Boolean,
     modifier: Modifier = Modifier,
@@ -48,10 +46,6 @@ fun NiaNavHost(
         startDestination = ForYouBaseRoute,
         modifier = modifier,
     ) {
-        composable(route = "foryou"){
-            Text("foryou")
-        }
-
         forYouSection(
             onTopicClick = {} //navController::navigateToTopic,
         ) {

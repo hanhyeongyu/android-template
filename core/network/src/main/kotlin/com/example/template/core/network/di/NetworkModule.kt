@@ -29,6 +29,7 @@ internal object NetworkModule {
 
     @Provides
     @Singleton
+    @Api
     fun okHttpCallFactory(): Call.Factory = trace("OkHttpClient") {
         OkHttpClient.Builder()
             .addInterceptor(

@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.template.MainActivityUiState.Loading
 import com.example.template.MainActivityUiState.Success
-import com.example.template.core.datastore.PreferencesDataSource
+import com.example.template.core.datastore.UserPreferencesDataSource
 import com.example.template.core.datastore.UserData
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.SharingStarted
@@ -15,7 +15,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MainActivityViewModel @Inject constructor(
-    preferences: PreferencesDataSource
+    preferences: UserPreferencesDataSource
 ) : ViewModel() {
 
     val uiState: StateFlow<MainActivityUiState> = preferences.userData.map {

@@ -25,14 +25,17 @@ secrets {
 
 dependencies {
     implementation(projects.core.common)
+    implementation(projects.core.datastore)
+    implementation(projects.core.preference)
+
 
 
     implementation(libs.kotlinx.serialization.json)
     implementation(libs.kotlinx.datetime)
 
     implementation(libs.okhttp.logging)
-    implementation(libs.retrofit.core)
-    implementation(libs.retrofit.kotlin.serialization)
+    api(libs.retrofit.core)
+    api(libs.retrofit.kotlin.serialization)
 
 
     implementation(libs.coil.kt)
